@@ -1,8 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-
-
 const App = () => {
   return (
     <div>
@@ -11,5 +9,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
