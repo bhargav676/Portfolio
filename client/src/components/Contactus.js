@@ -248,7 +248,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} id="contact">
       <div style={styles.contentWrapper}>
         {/* Contact Form Section */}
         <div style={styles.section}>

@@ -48,13 +48,26 @@ const Navbar = () => {
                 document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
                 closeMenu();
               }}>Home</li>
-              <li style={styles.sidebarItem} onClick={closeMenu}>Projects</li>
-              <li style={styles.sidebarItem} onClick={closeMenu}>About</li>
+              <li style={styles.sidebarItem} 
+              onClick={() => {
+                document.getElementById('project')?.scrollIntoView({ behavior: 'smooth' });
+                closeMenu();
+              }}>Projects</li>
+              <li style={styles.sidebarItem} 
+              onClick={() => {
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                closeMenu();
+              }}>About</li>
               <li style={styles.sidebarItem} onClick={() => {
               document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
               closeMenu();
             }}>Skills</li>
-              <li style={styles.sidebarItem} onClick={closeMenu}>Contact</li>
+              <li 
+              style={styles.sidebarItem} 
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                closeMenu();
+              }}>Contact</li>
             </ul>
           </div>
         </>
@@ -63,18 +76,23 @@ const Navbar = () => {
           <li style={styles.linkItem} onClick={() => {
               document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
             }}>Home</li>
-          <li style={styles.linkItem}>Projects</li>
-          <li style={styles.linkItem} >About</li>
+          <li style={styles.linkItem} onClick={() => {
+              document.getElementById('project')?.scrollIntoView({ behavior: 'smooth' });
+            }}>Projects</li>
+          <li style={styles.linkItem} onClick={() => {
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+            }} >About</li>
           <li
-            style={styles.linkItem}
-            onClick={() => {
+            style={styles.linkItem} onClick={() => {
               document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             Skills
           </li>
 
-          <li style={styles.linkItem}>Contact</li>
+          <li style={styles.linkItem} onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}>Contact</li>
         </ul>
       )}
     </nav>

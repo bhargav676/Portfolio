@@ -117,7 +117,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div style={styles.container} id="skills">
+    <div style={styles.container} id="about">
       <div style={styles.contentWrapper}>
         <div 
           style={styles.imageContainer}
