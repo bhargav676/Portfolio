@@ -25,7 +25,7 @@ const Projects = () => {
       title: 'Movie Ticket Booking ',
       image: project3Img,
       description: 'Developed a movie ticket booking platform that allows users to browse movies, select seats, and make secure payments in real time. The Admin Dashboard manages movies,and bookings, while the Customer Dashboard provides a seamless and user-friendly booking experience.',
-      liveDemo: 'https://example.com/taskmanager-demo',
+      liveDemo: 'https://movie-omega-five.vercel.app/',
     },
     {
       id: 4,
