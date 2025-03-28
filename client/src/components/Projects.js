@@ -2,7 +2,7 @@ import React from 'react';
 
 import project1Img from '../images/p1.jpg';
 import project2Img from '../images/p2.jpg';
-import project3Img from '../images/p3.jpg';
+import project3Img from '../images/p3.png';
 import project4Img from '../images/p4.jpg';
 const Projects = () => {
   const projects = [
