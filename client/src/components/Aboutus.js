@@ -154,7 +154,7 @@ const AboutUs = () => {
 
           <div style={styles.achievementSection}>
             <h3>Achievements</h3>
-            <div style={styles.achievementItem}>📱 Designed a farmerdirect website</div>
+            <div style={styles.achievementItem}>📱 Solved 100+ problems in leet code</div>
             <div style={styles.achievementItem}>📈 Delivered 2 successful projects</div>
             <div style={styles.achievementItem}>⚡ One of the project work in real-time</div>
           </div>

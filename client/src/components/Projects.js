@@ -1,9 +1,9 @@
 import React from 'react';
-// Placeholder images (replace with your actual project images)
-import project1Img from '../images/p1.jpg'; // Replace with your image paths
+
+import project1Img from '../images/p1.jpg';
 import project2Img from '../images/p2.jpg';
 import project3Img from '../images/p3.jpg';
-
+import project4Img from '../images/p4.jpg';
 const Projects = () => {
   const projects = [
     {
@@ -27,6 +27,14 @@ const Projects = () => {
       description: 'Developed a movie ticket booking platform that allows users to browse movies, select seats, and make secure payments in real time. The Admin Dashboard manages movies,and bookings, while the Customer Dashboard provides a seamless and user-friendly booking experience.',
       liveDemo: 'https://example.com/taskmanager-demo',
     },
+    {
+      id: 4,
+      title: 'Book Management System ',
+      image: project4Img,
+      description: 'The RFID-Based Smart Book Management System automates book exchanges, eliminating manual submission by using RFID tags for real-time tracking, secure verification, and instant return status updates.',
+      liveDemo: '',
+    },
+
   ];
 
   const styles = {
