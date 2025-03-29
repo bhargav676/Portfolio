@@ -4,38 +4,46 @@ import project1Img from '../images/p1.jpg';
 import project2Img from '../images/p2.jpg';
 import project3Img from '../images/p3.png';
 import project4Img from '../images/p4.jpg';
+import project5Img from '../images/p5.jpg';
 const Projects = () => {
   const projects = [
     {
       id: 1,
       title: 'Farm-Direct',
       image: project2Img,
-      description: 'FarmDirect connects farmers directly with customers, ensuring fair prices and fresh products. Farmers can set their own prices, and customers can easily browse and buy. The website is mobile-friendly, fast, and simple to use, making farm-to-table shopping easier.              ',
+      description: 'FarmDirect connects farmers with customers for fresh products at fair prices. Farmers set prices, and customers browse easily. The website is mobile-friendly, ensuring a smooth farm-to-table shopping experience.',
       liveDemo: 'https://farmdirect-beta.vercel.app/',
     },
     {
       id: 2,
       title: 'Electronics E-Commerce',
       image: project1Img,
-      description: 'Developed a MERN stack e-commerce platform for buying 100+ electronic components like Arduino, sensors, and joysticks Implemented Dynamic Projects, allowing admins to upload step-by-step guides with YouTube integration for learning.',
+      description: 'Built a MERN-based e-commerce site selling 100+ electronic parts like Arduino and sensors. Added Dynamic Projects, where admins upload guides with YouTube integration for interactive learning.',
       liveDemo: 'https://rlr-pi.vercel.app/',
     },
     {
       id: 3,
-      title: 'Movie Ticket Booking ',
+      title: 'Movie Ticket Booking',
       image: project3Img,
-      description: 'Developed a movie ticket booking platform that allows users to browse movies, select seats, and make secure payments in real time. The Admin Dashboard manages movies,and bookings, while the Customer Dashboard provides a seamless and user-friendly booking experience.',
+      description: 'Developed a platform for browsing movies, selecting seats, and making payments securely. Includes an Admin Dashboard for managing movies and bookings, ensuring a smooth user experience.',
       liveDemo: 'https://movie-omega-five.vercel.app/',
     },
     {
       id: 4,
-      title: 'Book Management System ',
+      title: 'Book Management System',
       image: project4Img,
-      description: 'The RFID-Based Smart Book Management System automates book exchanges, eliminating manual submission by using RFID tags for real-time tracking, secure verification, and instant return status updates.',
+      description: 'The RFID-Based Book Management System automates book exchanges with real-time tracking. RFID tags enable secure verification and instant return status updates for better library management.',
       liveDemo: '',
     },
-
+    {
+      id: 5,
+      title: 'Job Finder',
+      image: project5Img,
+      description: 'A job search website that helps users find jobs by location and role. Users can filter listings, view job details, and apply easily, making the job search process faster and more efficient.',
+      liveDemo: 'https://jobfinder-8zoms3qr1-bhargavks-projects.vercel.app/',
+    },
   ];
+  
 
   const styles = {
     container: {
