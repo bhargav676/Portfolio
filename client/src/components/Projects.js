@@ -5,6 +5,7 @@ import project2Img from '../images/p2.jpg';
 import project3Img from '../images/p3.png';
 import project4Img from '../images/p4.jpg';
 import project5Img from '../images/p5.jpg';
+import project6Img from '../images/p6.jpg';
 const Projects = () => {
   const projects = [
     {
@@ -41,6 +42,13 @@ const Projects = () => {
       image: project5Img,
       description: 'A job search website that helps users find jobs by location and role. Users can filter listings, view job details, and apply easily, making the job search process faster and more efficient.',
       liveDemo: 'https://jobfinder-8zoms3qr1-bhargavks-projects.vercel.app/',
+    },
+    {
+      id: 6,
+      title: 'Wireless EV Charging System ',
+      image: project6Img,
+      description: 'The Wireless EV Charging System uses RFID technology for automated vehicle identification and cost calculation at charging stations. It features a time-based charging system, an LCD display for real-time cost updates, and automated cost processing, ensuring a seamless and transparent user experience.',
+      liveDemo: '',
     },
   ];
   
