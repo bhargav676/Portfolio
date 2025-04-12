@@ -6,6 +6,7 @@ import project3Img from '../images/p3.png';
 import project4Img from '../images/p4.jpg';
 import project5Img from '../images/p5.jpg';
 import project6Img from '../images/p6.jpg';
+import project7Img from '../images/P7.jpg';
 const Projects = () => {
   const projects = [
     {
@@ -48,6 +49,13 @@ const Projects = () => {
       title: 'Wireless EV Charging System ',
       image: project6Img,
       description: 'The Wireless EV Charging System uses RFID technology for automated vehicle identification and cost calculation at charging stations. It features a time-based charging system, an LCD display for real-time cost updates, and automated cost processing, ensuring a seamless and transparent user experience.',
+      liveDemo: '',
+    },
+    {
+      id: 7,
+      title: 'Live IPL Score Display ',
+      image: project7Img,
+      description: 'Built an ESP32-based device to retrieve live IPL match scores via CricAPI and show them on an I2C LCD with a clean, real-time format. Includes reliable team name parsing and periodic updates.',
       liveDemo: '',
     },
   ];
