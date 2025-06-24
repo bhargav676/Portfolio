@@ -2,87 +2,114 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from "chart.js";
+import { Radar } from "react-chartjs-2";
+
+// Register ChartJS components
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 // Constants for categories
 const CATEGORIES = {
-  FRONTEND: {
-    name: "Frontend",
-    color: "linear-gradient(to right, #ec4899, #a855f7)",
-  },
-  BACKEND: {
-    name: "Backend",
-    color: "linear-gradient(to right, #3b82f6, #06b6d4)",
-  },
-  LANGUAGES: {
-    name: "Languages",
-    color: "linear-gradient(to right, #f59e0b, #f97316)",
-  },
-  TOOLS: {
-    name: "Tools",
-    color: "linear-gradient(to right, #10b981, #22c55e)",
-  },
+  FRONTEND: { name: "Frontend" },
+  BACKEND: { name: "Backend" },
+  LANGUAGES: { name: "Languages" },
+  TOOLS: { name: "Tools" },
 };
 
-// Skills array with explicit express property
+// Skills array
 const skills = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg", title: "React.js", category: CATEGORIES.FRONTEND, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg", title: "Node.js", category: CATEGORIES.BACKEND, express: false },
-  { src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg", title: "Express.js", category: CATEGORIES.BACKEND, express: true },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg", title: "MongoDB", category: CATEGORIES.BACKEND, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg", title: "HTML", category: CATEGORIES.FRONTEND, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg", title: "CSS", category: CATEGORIES.FRONTEND, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", title: "Tailwind", category: CATEGORIES.FRONTEND, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg", title: "JavaScript", category: CATEGORIES.LANGUAGES, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg", title: "C", category: CATEGORIES.LANGUAGES, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/800px-ISO_C%2B%2B_Logo.svg.png", title: "C++", category: CATEGORIES.LANGUAGES, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", title: "Python", category: CATEGORIES.LANGUAGES, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg", title: "GitHub", category: CATEGORIES.TOOLS, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg", title: "Figma", category: CATEGORIES.TOOLS, express: false },
-  { src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg", title: "Postman", category: CATEGORIES.TOOLS, express: false },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg", title: "Arduino IDE", category: CATEGORIES.TOOLS, express: false },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg", title: "React.js", category: CATEGORIES.FRONTEND, proficiency: 80 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg", title: "Node.js", category: CATEGORIES.BACKEND, proficiency: 70 },
+  { src: "https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg", title: "Express.js", category: CATEGORIES.BACKEND, proficiency: 65 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg", title: "MongoDB", category: CATEGORIES.BACKEND, proficiency: 60 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg", title: "HTML", category: CATEGORIES.FRONTEND, proficiency: 85 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg", title: "CSS", category: CATEGORIES.FRONTEND, proficiency: 80 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", title: "Tailwind", category: CATEGORIES.FRONTEND, proficiency: 75 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg", title: "JavaScript", category: CATEGORIES.LANGUAGES, proficiency: 90 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg", title: "C", category: CATEGORIES.LANGUAGES, proficiency: 90 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/800px-ISO_C%2B%2B_Logo.svg.png", title: "C++", category: CATEGORIES.LANGUAGES, proficiency: 95 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg", title: "Python", category: CATEGORIES.LANGUAGES, proficiency: 85 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg", title: "GitHub", category: CATEGORIES.TOOLS, proficiency: 70 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg", title: "Figma", category: CATEGORIES.TOOLS, proficiency: 60 },
+  { src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg", title: "Postman", category: CATEGORIES.TOOLS, proficiency: 65 },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg", title: "Arduino IDE", category: CATEGORIES.TOOLS, proficiency: 50 },
 ];
+
+// Radar chart data
+const radarData = {
+  labels: skills.map((skill) => skill.title),
+  datasets: [
+    {
+      label: "Skill Proficiency (%)",
+      data: skills.map((skill) => skill.proficiency),
+      backgroundColor: "rgba(16, 185, 129, 0.2)",
+      borderColor: "rgba(16, 185, 129, 1)",
+      borderWidth: 2,
+    },
+  ],
+};
+
+// Radar chart options
+const radarOptions = {
+  maintainAspectRatio: false,
+  scales: {
+    r: {
+      angleLines: { color: "rgba(255, 255, 255, 0.1)" },
+      grid: { color: "rgba(255, 255, 255, 0.1)" },
+      pointLabels: {
+        font: { size: 10 },
+        color: "#d1d5db"
+      },
+      ticks: { 
+        beginAtZero: true, 
+        max: 100, 
+        stepSize: 20, 
+        color: "#d1d5db",
+        backdropColor: 'rgba(0, 0, 0, 0.5)'
+      },
+    },
+  },
+  plugins: {
+    legend: { labels: { color: "#d1d5db" } },
+    tooltip: {
+      callbacks: {
+        label: function (context) {
+          let label = context.dataset.label || '';
+          if (label) {
+            label += ': ';
+          }
+          if (context.parsed.r !== null) {
+            label += context.parsed.r + '%';
+          }
+          return label;
+        }
+      }
+    }
+  },
+};
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Debounced resize handler
   useEffect(() => {
-    let timeoutId;
     const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
         setIsMobile(window.innerWidth <= 768);
-      }, 100); // Debounce for 100ms
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const filteredSkills = activeCategory
     ? skills.filter((skill) => skill.category.name === activeCategory)
     : skills;
 
-  const visibleSkills = isMobile && !isExpanded ? filteredSkills.slice(0, 10) : filteredSkills;
+  const visibleSkills = isMobile && !isExpanded ? filteredSkills.slice(0, 8) : filteredSkills;
 
   const categories = Object.values(CATEGORIES);
-
-  function getSkillRows(skillsArr, itemsPerRow) {
-    const rows = [];
-    for (let i = 0; i < skillsArr.length; i += itemsPerRow) {
-      rows.push(skillsArr.slice(i, i + itemsPerRow));
-    }
-    return rows;
-  }
-
-  const itemsPerRow = 5;
-  const skillRows = getSkillRows(visibleSkills, itemsPerRow);
 
   return (
     <section id="skills" className="skills-section">
@@ -96,238 +123,180 @@ const SkillsSection = () => {
           >
             Skills & Tech Stack
           </motion.h2>
-          <motion.div
-            className="title-underline"
-            initial={{ width: 0 }}
-            animate={{ width: 64 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          />
         </div>
         <div className="category-filters">
-          <motion.button
-            className={`filter-button ${activeCategory === null ? "active" : ""}`}
+          <motion.div
+            className={`filter-item ${activeCategory === null ? "active" : ""}`}
             onClick={() => setActiveCategory(null)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="button"
             aria-label="Show all skills"
+            role="button"
+            tabIndex={0}
           >
             All
-          </motion.button>
+          </motion.div>
+          
           {categories.map((category) => (
-            <motion.button
+            <motion.div
               key={category.name}
-              className={`filter-button ${activeCategory === category.name ? "active" : ""}`}
-              style={{
-                background: activeCategory === category.name ? category.color : "",
-                color: activeCategory === category.name ? "#fff" : "",
-              }}
+              className={`filter-item ${activeCategory === category.name ? "active" : ""}`}
               onClick={() => setActiveCategory(category.name)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="button"
               aria-label={`Filter by ${category.name}`}
+              role="button"
+              tabIndex={0}
             >
               {category.name}
-            </motion.button>
+            </motion.div>
           ))}
         </div>
-        <br />
-        <br />
-        <div className="skills-rows-wrapper">
-          {skillRows.map((row, rowIdx) => (
-            <div className="skills-row" key={`row-${rowIdx}`}>
-              {row.map((skill, skillIdx) => (
+        
+        <div className="skills-content">
+          <div className="skills-list">
+            <div className="skills-grid">
+              {visibleSkills.map((skill, index) => (
                 <motion.div
                   key={skill.title}
                   className="skill-icon-item"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * (rowIdx * itemsPerRow + skillIdx) }}
-                  whileHover={{ scale: 1.13, zIndex: 10 }}
+                  transition={{ duration: 0.5, delay: 0.05 * index }}
+                  whileHover={{ scale: 1.1, zIndex: 10 }} /* RESTORED HOVER EFFECT */
                 >
-                  <br />
-                  {skill.express ? (
-                    <span className="icon-express-bg">
-                      <img
-                        src={skill.src}
-                        alt={skill.title}
-                        className="skill-icon express-icon"
-                        style={{
-                          background: "#fff",
-                          borderRadius: "50%",
-                          padding: "7px",
-                          boxShadow: "0 1px 6px rgba(0,0,0,0.13)",
-                        }}
-                        onError={() => console.warn(`Failed to load image for ${skill.title}`)}
-                      />
-                    </span>
-                  ) : (
-                    <img
-                      src={skill.src}
-                      alt={skill.title}
-                      className="skill-icon"
-                      onError={() => console.warn(`Failed to load image for ${skill.title}`)}
-                    />
-                  )}
+                  <img
+                    src={skill.src}
+                    alt={skill.title}
+                    className="skill-icon"
+                    onError={() => console.warn(`Failed to load image for ${skill.title}`)}
+                  />
                   <div className="icon-line" />
                   <div className="icon-title">{skill.title}</div>
                 </motion.div>
               ))}
             </div>
-          ))}
-        </div>
-          <br/><br/>
-        {isMobile && filteredSkills.length > 10 && (
-          <div className="expand-button-container">
-            <motion.button
-              className="expand-button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="button"
-              aria-label={isExpanded ? "Collapse skills list" : "Expand skills list"}
-            >
-              {isExpanded ? "Collapse" : "Expand"}
-            </motion.button>
+            {isMobile && filteredSkills.length > 8 && (
+              <div className="expand-button-container">
+                <motion.button
+                  className="expand-button"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  type="button"
+                  aria-label={isExpanded ? "Collapse skills list" : "Expand skills list"}
+                >
+                  {isExpanded ? "Show Less" : "Show More"}
+                </motion.button>
+              </div>
+            )}
           </div>
-        )}
+          <div className="skills-radar">
+            <h3 className="radar-title">Proficiency Overview</h3>
+            <div className="chart-container">
+                <Radar data={radarData} options={radarOptions} />
+            </div>
+          </div>
+        </div>
       </div>
-        <br/><br/><br/>
       <style jsx>{`
         .skills-section {
-          padding: 40px 0 24px 0;
-          background: rgb(0, 0, 0);
+          padding: 60px 0;
+          background: #000;
           color: #fafafa;
           font-family: Arial, sans-serif;
         }
         .container {
-          max-width: 1080px;
+          max-width: 1100px;
           margin: 0 auto;
-          padding: 0 12px;
+          padding: 0 15px;
         }
         .section-header {
           text-align: center;
-          margin-bottom: 28px;
+          margin-bottom: 40px;
         }
         .section-title {
-          font-size: 26px;
+          font-size: 32px;
           font-weight: bold;
-          margin-bottom: 10px;
-          background: linear-gradient(to right, #a78bfa, #ec4899, #ef4444);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-        .title-underline {
-          width: 64px;
-          height: 3px;
-          background: linear-gradient(to right, #a855f7, #ec4899);
-          margin: 0 auto 8px;
+          margin-bottom: 12px;
+          color: #e5e7eb;
         }
         .category-filters {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 8px;
-          margin-bottom: 20px;
+          gap: 24px;
+          margin-bottom: 50px;
         }
-        .filter-button {
-          padding: 6px 14px;
-          border-radius: 9999px;
-          font-size: 12px;
+        .filter-item {
+          padding: 4px;
+          font-size: 16px;
           font-weight: 500;
-          background-color: #1f2937;
-          color: #d1d5db;
+          color: #9ca3af; /* Muted gray for inactive items */
+          background-color: transparent;
           border: none;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: color 0.3s ease;
         }
-        .filter-button:hover {
-          background-color: #374151;
+        .filter-item:hover {
+          color: #fafafa;
         }
-        .filter-button.active {
-          background-color: #fff;
-          color: #000;
+        /* UPDATED: Active state uses color and font-weight, no underline */
+        .filter-item.active {
+          color: #ffffff;
+          font-weight: 600;
         }
-        .skills-rows-wrapper {
+        .skills-content {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
           align-items: center;
-          gap: 44px;
+          flex-wrap: wrap;
+          gap: 40px;
         }
-        .skills-row {
+        .skills-list {
+          flex: 1.5;
+          min-width: 300px;
+        }
+        .skills-grid {
           display: flex;
-          flex-direction: row;
+          flex-wrap: wrap;
           justify-content: center;
-          gap: 80px;
-          margin-bottom: 0;
+          gap: 40px;
         }
         .skill-icon-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          min-width: 112px;
-          max-width: 130px;
-          gap: 12px;
+          width: 80px;
+          text-align: center;
+          gap: 8px;
           cursor: pointer;
-          background: none;
-          border-radius: 0;
-          padding: 0;
-          box-shadow: none;
+          transition: transform 0.2s ease-in-out;
         }
         .skill-icon {
-          width: 56px;
-          height: 56px;
+          width: 38px;
+          height: 38px;
           object-fit: contain;
-          background: none;
-          border-radius: 0;
-          box-shadow: none;
-          transition: transform 0.18s;
-          display: block;
         }
-        .icon-express-bg {
-          background: #fff;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 1px 8px rgba(0, 0, 0, 0.13);
-          padding: 2px;
-        }
-        .express-icon {
-          width: 48px;
-          height: 48px;
-        }
-        .skill-icon-item:hover .skill-icon {
-          transform: scale(1.15);
+        .skill-icon[src*="expressjs"] {
+          filter: invert(1);
         }
         .icon-line {
-          width: 40px;
-          height: 3px;
+          width: 30px;
+          height: 2px;
           background: #fafafa;
-          margin: 10px 0 4px 0;
-          border-radius: 2px;
-          opacity: 0.07;
+          opacity: 0.1;
         }
         .icon-title {
-          font-size: 17px;
-          font-weight: 600;
-          text-align: center;
-          color: #fafafa;
-          margin-top: 1px;
-          letter-spacing: 0.2px;
-          text-shadow: 0 1px 8px #000a;
+          font-size: 14px;
+          font-weight: 500;
+          color: #d1d5db;
         }
         .expand-button-container {
           display: flex;
           justify-content: center;
-          margin-top: 18px;
+          margin-top: 25px;
         }
         .expand-button {
-          padding: 7px 14px;
+          padding: 8px 20px;
           border-radius: 9999px;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
           background-color: #a855f7;
           color: #fff;
@@ -338,52 +307,71 @@ const SkillsSection = () => {
         .expand-button:hover {
           background-color: #9333ea;
         }
-        @media (max-width: 1100px) {
-          .skills-row {
-            gap: 40px;
-          }
-          .skill-icon-item {
-            min-width: 90px;
-            max-width: 100px;
-          }
+        .skills-radar {
+          flex: 1;
+          min-width: 300px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
-        @media (max-width: 768px) {
-          .skills-section {
-            padding: 24px 0 2px 0;
+        .radar-title {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #d1d5db;
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 450px;
+        }
+        
+        /* RESPONSIVENESS */
+        @media (max-width: 850px) {
+          .skills-content {
+            flex-direction: column;
+            gap: 60px;
           }
-          .skills-rows-wrapper {
-            gap: 19px;
+          .skills-list, .skills-radar {
+            flex: none;
+            width: 100%;
           }
-          .skills-row {
-            gap: 16px;
-          }
-          .skill-icon-item {
-            min-width: 80px;
-            max-width: 90px;
-          }
-          .skill-icon {
-            width: 36px;
-            height: 36px;
-          }
-          .icon-title {
-            font-size: 11px;
-          }
-          .icon-line {
-            width: 20px;
-            height: 1.5px;
+          .chart-container {
+            max-width: 450px;
+            height: 400px;
           }
         }
         @media (max-width: 480px) {
-          .skills-row {
-            gap: 6px;
+          .section-title {
+            font-size: 28px;
+          }
+          .category-filters {
+            gap: 16px;
+          }
+          .filter-item {
+            font-size: 15px;
+          }
+          .skills-grid {
+            gap: 30px;
           }
           .skill-icon-item {
-            min-width: 60px;
-            max-width: 80px;
+             width: 65px;
           }
           .skill-icon {
-            width: 22px;
-            height: 22px;
+            width: 34px;
+            height: 34px;
+          }
+          .icon-title {
+            font-size: 12px;
+          }
+          .chart-container {
+            max-width: 360px;
+            height: 340px;
+          }
+          .radar-title {
+            font-size: 18px;
           }
         }
       `}</style>

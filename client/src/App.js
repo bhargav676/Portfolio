@@ -5,9 +5,10 @@ import AboutUs from './components/Aboutus'
 import ContactUs from './components/Contactus'
 import SkillsAndServices from './components/Skills'
 import Projects from './components/Projects'
+
 const App = () => {
   return (
-    <div>
+    <div class="hello">
       <Navbar/>
       <Home/>
       <AboutUs/>

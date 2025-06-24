@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion'; // <-- Import motion
 import { 
   FaEnvelope, 
   FaPhone, 
@@ -25,355 +26,278 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Here you would typically send the form data to a backend or service
     console.log(formData);
+    alert('Thank you for your message!');
     setFormData({ name: '', email: '', mobile: '', message: '' });
   };
 
-  const styles = {
-    container: {
-      backgroundColor: '#000000',
-      minHeight: '100vh',
-      padding: '50px 20px',
-      color: '#ffffff',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    contentWrapper: {
-      maxWidth: '1200px',
-      width: '100%',
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '40px',
-      margin: '0 auto',
-    },
-    section: {
-      flex: '1 1 400px', // Flex grow, shrink, and basis
-      minWidth: '0', // Prevents overflow
-      padding: '20px',
-    },
-    formCard: {
-      backgroundColor: '#1a1a1a',
-      borderRadius: '12px',
-      padding: '30px',
-      boxShadow: '0 6px 12px rgba(0, 0, 0, 0.3)',
-      transition: 'transform 0.2s ease',
-      height: '100%', // Ensures card takes full height of content
-    },
-    title: {
-      fontSize: '2.5rem',
-      marginBottom: '30px',
-      fontWeight: 'bold',
-      background: 'linear-gradient(45deg, #ffffff, #cccccc)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px',
-    },
-    inputContainer: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      width: '100%',
-    },
-    inputIcon: {
-      position: 'absolute',
-      left: '10px',
-      color: '#ffffff',
-      fontSize: '1.2rem',
-      zIndex: 1,
-    },
-    input: {
-      padding: '12px 12px 12px 40px',
-      backgroundColor: '#2a2a2a',
-      border: 'none',
-      borderRadius: '5px',
-      color: '#ffffff',
-      fontSize: '1rem',
-      width: '100%',
-      outline: 'none',
-      boxSizing: 'border-box',
-    },
-    textareaContainer: {
-      position: 'relative',
-      width: '100%',
-    },
-    textarea: {
-      padding: '12px',
-      backgroundColor: '#2a2a2a',
-      border: 'none',
-      borderRadius: '5px',
-      color: '#ffffff',
-      fontSize: '1rem',
-      minHeight: '150px',
-      resize: 'vertical',
-      width: '100%',
-      outline: 'none',
-      boxSizing: 'border-box',
-    },
-    button: {
-      padding: '12px 25px',
-      backgroundColor: '#ffffff',
-      color: '#000000',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      fontWeight: 'bold',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      transition: 'all 0.3s ease',
-      marginTop: '10px',
-    },
-    contactInfo: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '25px',
-    },
-    infoItem: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '15px',
-      fontSize: '1.1rem',
-    },
-    socialLinks: {
-      display: 'flex',
-      gap: '20px',
-      marginTop: '30px',
-    },
-    icon: {
-      color: '#ffffff',
-      fontSize: '1.5rem',
-      transition: 'color 0.3s ease',
-    },
-    // Responsive Design
-    '@media (max-width: 1024px)': {
-      section: {
-        flex: '1 1 350px',
-      },
-      title: {
-        fontSize: '2rem',
-      },
-      formCard: {
-        padding: '25px',
-      },
-    },
-    '@media (max-width: 768px)': {
-      contentWrapper: {
-        flexDirection: 'column',
-        gap: '30px',
-      },
-      section: {
-        flex: '1 1 100%',
-        padding: '15px',
-      },
-      container: {
-        padding: '30px 15px',
-      },
-      formCard: {
-        padding: '20px',
-      },
-      title: {
-        fontSize: '1.8rem',
-        marginBottom: '20px',
-      },
-      input: {
-        fontSize: '0.95rem',
-        padding: '10px 10px 10px 35px',
-      },
-      textarea: {
-        fontSize: '0.95rem',
-        padding: '10px',
-        minHeight: '120px',
-      },
-      inputIcon: {
-        fontSize: '1rem',
-      },
-      button: {
-        padding: '10px 20px',
-      },
-    },
-    '@media (max-width: 480px)': {
-      container: {
-        padding: '20px 10px',
-      },
-      section: {
-        padding: '10px',
-      },
-      formCard: {
-        padding: '15px',
-      },
-      title: {
-        fontSize: '1.5rem',
-        marginBottom: '15px',
-      },
-      form: {
-        gap: '15px',
-      },
-      input: {
-        fontSize: '0.9rem',
-        padding: '8px 8px 8px 30px',
-      },
-      textarea: {
-        fontSize: '0.9rem',
-        padding: '8px',
-        minHeight: '100px',
-      },
-      inputIcon: {
-        fontSize: '0.9rem',
-        left: '8px',
-      },
-      button: {
-        padding: '8px 15px',
-        fontSize: '0.9rem',
-      },
-      contactInfo: {
-        gap: '20px',
-      },
-      infoItem: {
-        fontSize: '0.9rem',
-        gap: '10px',
-      },
-      socialLinks: {
-        gap: '15px',
-        marginTop: '20px',
-      },
-      icon: {
-        fontSize: '1.2rem',
-      },
-    },
-  };
-
   return (
-    <div style={styles.container} id="contact">
-      <div style={styles.contentWrapper}>
-        {/* Contact Form Section */}
-        <div style={styles.section}>
-          <div 
-            style={styles.formCard}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-          >
-            <h1 style={styles.title}>Get in Touch</h1>
-            <form style={styles.form} onSubmit={handleSubmit}>
-              <div style={styles.inputContainer}>
-                <FaUser style={styles.inputIcon} />
-                <input
-                  style={styles.input}
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                />
+    <>
+      <section id="contact" className="contact-section">
+        <motion.div 
+          className="contact-card"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {/* Left Panel: Contact Info */}
+          <div className="contact-info-panel">
+            <h2 className="info-title">Contact Information</h2>
+            <p className="info-subtitle">Fill up the form and I will get back to you within 24 hours.</p>
+            
+            <div className="info-item">
+              <FaPhone />
+              <span>+91 9515096422</span>
+            </div>
+            <div className="info-item">
+              <FaEnvelope />
+              <span>bhargavaprasadkagitala@gmail.com</span>
+            </div>
+            <div className="info-item">
+              <FaMapMarkerAlt />
+              <span>Visakhapatnam, India</span>
+            </div>
+
+            <div className="social-links">
+              <a href="https://github.com/bhargav676" target="_blank" rel="noopener noreferrer">
+                <FaGithub />
+              </a>
+              <a href="https://www.linkedin.com/in/k-bhargava-prasad-6842b0291/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <FaTwitter />
+              </a>
+            </div>
+          </div>
+
+          {/* Right Panel: Form */}
+          <div className="contact-form-panel">
+            <form onSubmit={handleSubmit}>
+              <div className="input-group">
+                <label htmlFor="name">Name</label>
+                <div className="input-with-icon">
+                  <FaUser className="input-icon" />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+                </div>
               </div>
 
-              <div style={styles.inputContainer}>
-                <FaEnvelope style={styles.inputIcon} />
-                <input
-                  style={styles.input}
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  required
-                />
+              <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <div className="input-with-icon">
+                  <FaEnvelope className="input-icon" />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                </div>
               </div>
 
-              <div style={styles.inputContainer}>
-                <FaMobileAlt style={styles.inputIcon} />
-                <input
-                  style={styles.input}
-                  type="tel"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  placeholder="Your Mobile Number"
-                  required
-                />
+              <div className="input-group">
+                <label htmlFor="mobile">Mobile Number</label>
+                <div className="input-with-icon">
+                  <FaMobileAlt className="input-icon" />
+                  <input type="tel" id="mobile" name="mobile" value={formData.mobile} onChange={handleChange} required />
+                </div>
               </div>
 
-              <div style={styles.textareaContainer}>
-                <textarea
-                  style={styles.textarea}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Your Message"
-                  required
-                />
+              <div className="input-group">
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" value={formData.message} rows="5" onChange={handleChange} required />
               </div>
-
-              <button 
-                style={styles.button}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#cccccc'}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
-              >
+              
+              <button type="submit" className="submit-button">
                 Send Message <FaPaperPlane />
               </button>
             </form>
           </div>
-        </div>
-        <div style={styles.section}>
-          <h1 style={styles.title}>Contact Info</h1>
-          <div style={styles.contactInfo}>
-            <div style={styles.infoItem}>
-              <FaEnvelope style={styles.icon} />
-              <span>bhargavaprasadkagitala@gmail.com</span>
-            </div>
-            <div style={styles.infoItem}>
-              <FaPhone style={styles.icon} />
-              <span>+91 9515096422</span>
-            </div>
-            <div style={styles.infoItem}>
-              <FaMapMarkerAlt style={styles.icon} />
-              <span>visakhapatnam</span>
-            </div>
-          </div>
-          
-          <div style={styles.socialLinks}>
-            <a 
-              href="https://github.com/bhargav676" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <FaGithub 
-                style={styles.icon}
-                onMouseOver={(e) => e.currentTarget.style.color = '#cccccc'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#ffffff'}
-              />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/k-bhargava-prasad-6842b0291/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin 
-                style={styles.icon}
-                onMouseOver={(e) => e.currentTarget.style.color = '#cccccc'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#ffffff'}
-              />
-            </a>
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <FaTwitter 
-                style={styles.icon}
-                onMouseOver={(e) => e.currentTarget.style.color = '#cccccc'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#ffffff'}
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </section>
+
+      {/* --- STYLES ARE NOW IN A JSX STYLE BLOCK FOR BETTER FEATURES --- */}
+      <style jsx>{`
+        :root {
+          --accent-color: #81e6d9;
+          --bg-dark: #111;
+          --bg-light: #1a1a1a;
+          --text-primary: #ffffff;
+          --text-secondary: #a0aec0;
+          --border-color: #2d3748;
+        }
+
+        .contact-section {
+          background-color: #000000;
+          min-height: 100vh;
+          padding: 80px 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+
+        .contact-card {
+          max-width: 1100px;
+          width: 100%;
+          display: flex;
+          background-color: var(--bg-dark);
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(129, 230, 217, 0.2);
+        }
+
+        /* --- Left Info Panel --- */
+        .contact-info-panel {
+          flex-basis: 40%;
+          padding: 40px;
+          background: linear-gradient(135deg, #2D3748, #1A202C);
+          color: var(--text-primary);
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+        .info-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: var(--accent-color);
+        }
+        .info-subtitle {
+          font-size: 1rem;
+          color: var(--text-secondary);
+          line-height: 1.6;
+        }
+        .info-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          font-size: 1rem;
+        }
+        .info-item svg {
+          font-size: 1.2rem;
+          color: var(--accent-color);
+        }
+
+        /* --- Social Links --- */
+        .social-links {
+          margin-top: auto; /* Pushes to the bottom */
+          display: flex;
+          gap: 20px;
+        }
+        .social-links a {
+          color: var(--text-secondary);
+          font-size: 1.5rem;
+          transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+          color: var(--accent-color);
+          transform: scale(1.1);
+        }
+
+        /* --- Right Form Panel --- */
+        .contact-form-panel {
+          flex-basis: 60%;
+          padding: 40px;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .input-group {
+          display: flex;
+          flex-direction: column;
+        }
+        label {
+          margin-bottom: 8px;
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          font-weight: bold;
+        }
+        .input-with-icon {
+          position: relative;
+        }
+        .input-icon {
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--text-secondary);
+          transition: color 0.3s ease;
+        }
+        input, textarea {
+          width: 100%;
+          padding: 12px;
+          background-color: var(--bg-light);
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          color: var(--text-primary);
+          font-size: 1rem;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          box-sizing: border-box; /* Important for padding */
+        }
+        input {
+          padding-left: 45px;
+        }
+        input:focus, textarea:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          box-shadow: 0 0 0 3px rgba(129, 230, 217, 0.2);
+        }
+        input:focus + .input-icon,
+        .input-with-icon:focus-within .input-icon {
+            color: var(--accent-color);
+        }
+        textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        /* --- Submit Button --- */
+        .submit-button {
+          padding: 12px 25px;
+          background-color: var(--accent-color);
+          color: #1A202C; /* Dark text for contrast */
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          transition: all 0.3s ease;
+          margin-top: 10px;
+        }
+        .submit-button:hover {
+          background-color: #A0AEC0;
+          box-shadow: 0 5px 15px rgba(129, 230, 217, 0.3);
+          transform: translateY(-2px);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+          .contact-card {
+            flex-direction: column;
+          }
+          .contact-info-panel, .contact-form-panel {
+            flex-basis: 100%;
+          }
+          .social-links {
+            margin-top: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-section {
+            padding: 40px 10px;
+          }
+          .contact-info-panel, .contact-form-panel {
+            padding: 25px;
+          }
+          .info-title {
+            font-size: 1.5rem;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
