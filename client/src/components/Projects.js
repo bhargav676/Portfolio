@@ -1,8 +1,8 @@
-import React, { useState } from 'react'; // <-- Import useState
+import React, { useState } from 'react'; 
 import { motion } from 'framer-motion';
 import { FaGithub, FaEye } from 'react-icons/fa';
 
-// --- Your image imports remain the same ---
+
 import project1Img from '../images/p1.jpg';
 import project2Img from '../images/p2.jpg';
 import project3Img from '../images/p3.png';
@@ -10,56 +10,77 @@ import project4Img from '../images/p4.jpg';
 import project5Img from '../images/p5.jpg';
 import project6Img from '../images/p6.jpg';
 import project7Img from '../images/P7.jpg';
+import project8Img from '../images/p8.png';
+import project9Img from '../images/p9.png';
 
 const projects = [
-  // --- Your projects array remains the same ---
-  {
-    id: 1,
-    title: 'Farm-Direct',
-    image: project2Img,
-    description: 'FarmDirect connects farmers with customers for fresh products at fair prices. Farmers set prices, and customers browse easily. The website is mobile-friendly, ensuring a smooth farm-to-table shopping experience.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-    liveDemo: 'https://farmdirect-beta.vercel.app/',
-    githubLink: 'https://github.com/your-repo/farm-direct',
-  },
+    {
+  id: 1,
+  title: 'Water Quality Monitoring System',
+  image: project8Img, 
+  description: 'An IoT-based Water Quality Monitoring System that collects real-time data such as pH, turbidity, and temperature. The data is displayed on a responsive dashboard, enabling users to track water health efficiently. Alerts are sent when thresholds are exceeded, ensuring timely action.',
+  tech: ['React', 'Node.js', 'MongoDB', 'Express', 'IoT', 'Socket.Io','Platform IO'],
+  liveDemo: 'https://waterquality-five.vercel.app/', 
+  githubLink: 'https://github.com/bhargav676/waterquality', 
+},
+  
   {
     id: 2,
-    title: 'Electronics E-Commerce',
-    image: project1Img,
-    description: 'Built a MERN-based e-commerce site selling 100+ electronic parts like Arduino and sensors. Added Dynamic Projects, where admins upload guides with YouTube integration for interactive learning.',
-    tech: ['MERN', 'Redux', 'YouTube API'],
-    liveDemo: 'https://rlr-pi.vercel.app/',
-    githubLink: 'https://github.com/your-repo/electronics-ecommerce',
+    title: 'Farm-Direct',
+    image: project2Img,
+    description: 'FarmDirect connects farmers with customers for fresh, fairly priced produce. Farmers manage pricing directly, while customers enjoy a responsive, mobile-friendly interface. The platform includes real-time listings and a secure integrated payment gateway for seamless transactions.',
+    tech: ['React', 'Node.js', 'MongoDB', 'Express','Flask'],
+    liveDemo: 'https://farmdirect-beta.vercel.app/',
+    githubLink: 'https://github.com/bhargav676/farmdirect',
   },
   {
     id: 3,
-    title: 'Movie Ticket Booking',
-    image: project3Img,
-    description: 'Developed a platform for browsing movies, selecting seats, and making payments securely. Includes an Admin Dashboard for managing movies and bookings, ensuring a smooth user experience.',
-    tech: ['React', 'Stripe', 'Node.js'],
-    liveDemo: 'https://movie-omega-five.vercel.app/',
-    githubLink: 'https://github.com/your-repo/movie-booking',
+    title: 'Electronics E-Commerce',
+    image: project1Img,
+    description: 'Built a MERN-based e-commerce site selling 100+ electronic parts like Arduino and sensors. Added Dynamic Projects, where admins upload guides with YouTube integration for interactive learning.',
+    tech: ['MERN stack'],
+    liveDemo: 'https://rlr-pi.vercel.app/',
+    githubLink: 'https://github.com/bhargav676/RLR',
   },
-  {
-    id: 4,
+    {
+    id: 5,
     title: 'Book Management System',
     image: project4Img,
     description: 'The RFID-Based Book Management System automates book exchanges with real-time tracking. RFID tags enable secure verification and instant return status updates for better library management.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'RFID'],
+    tech: ['Arduino IDE', 'RFID'],
     liveDemo: '',
     githubLink: 'https://github.com/your-repo/rfid-library',
   },
   {
-    id: 5,
+    id: 4,
+    title: 'Movie Ticket Booking',
+    image: project3Img,
+    description: 'Developed a platform for browsing movies, selecting seats, and making payments securely. Includes an Admin Dashboard for managing movies and bookings, ensuring a smooth user experience.',
+    tech: ['React',  'Node.js'],
+    liveDemo: 'https://movie-omega-five.vercel.app/',
+    githubLink: 'https://github.com/your-repo/movie-booking',
+  },
+
+  {
+    id: 6,
     title: 'Job Finder',
     image: project5Img,
     description: 'A job search website that helps users find jobs by location and role. Users can filter listings, view job details, and apply easily, making the job search process faster and more efficient.',
     tech: ['React', 'API', 'Tailwind CSS'],
     liveDemo: 'https://jobfinder-8zoms3qr1-bhargavks-projects.vercel.app/',
-    githubLink: 'https://github.com/your-repo/job-finder',
+    githubLink: 'https://github.com/bhargav676/Jobfinder',
   },
   {
-    id: 6,
+  id: 7,
+  title: 'Jalarakshak - Official Website',
+  image: project9Img, 
+  description: 'The official website for Jalarakshak, a water-tech company focused on innovative solutions for water monitoring and sustainability. It showcases products, company values, contact details, and integrates customer support features.',
+  tech: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
+  liveDemo: 'https://jalarakshak.vercel.app/', 
+  githubLink: 'https://github.com/bhargav676/jalarakshak', 
+},
+  {
+    id: 8,
     title: 'Wireless EV Charging System',
     image: project6Img,
     description: 'The Wireless EV Charging System uses RFID technology for automated vehicle identification and cost calculation at charging stations. It features a time-based charging system, an LCD display for real-time cost updates, and automated cost processing.',
@@ -68,7 +89,7 @@ const projects = [
     githubLink: 'https://github.com/your-repo/ev-charging',
   },
   {
-    id: 7,
+    id: 9,
     title: 'Live IPL Score Display',
     image: project7Img,
     description: 'Built an ESP32-based device to retrieve live live IPL match scores via CricAPI and show them on an I2C LCD with a clean, real-time format. Includes reliable team name parsing and periodic updates.',
@@ -76,17 +97,19 @@ const projects = [
     liveDemo: '',
     githubLink: 'https://github.com/your-repo/ipl-display',
   },
+
+
+
 ];
 
-// --- NEW LOGIC STARTS HERE ---
 const Projects = () => {
-  // State to manage the expanded view
+
   const [isExpanded, setIsExpanded] = useState(false);
   
-  // Number of projects to show initially. I've chosen 4 as it works well with the alternating layout.
+  
   const INITIAL_PROJECT_COUNT = 4;
 
-  // Determine which projects to display based on the state
+  
   const projectsToShow = isExpanded ? projects : projects.slice(0, INITIAL_PROJECT_COUNT);
 
   return (
@@ -94,7 +117,7 @@ const Projects = () => {
       <div className="container">
         <h2 className="section-title">My Projects</h2>
         <div className="projects-list">
-          {/* We now map over the conditionally sliced array */}
+      
           {projectsToShow.map((project) => (
             <div key={project.id} className="project-item">
               <div className="project-image-container">

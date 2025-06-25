@@ -257,9 +257,9 @@ const AboutUs = () => {
         <TextColumn>
           <Heading>About Me</Heading>
           <Paragraph>
-            Hello, my name is Kagitala Bhargava Prasad. I’m a developer with a deep interest in IoT systems, web development, and embedded technologies. What began as a personal interest in coding soon turned into a passion for building real-world applications that merge hardware and software.
-            <br/><br/>
-            Over time, I’ve developed strong skills in full stack development and IoT-based systems, and I’m constantly learning through hands-on projects and challenges. I’m actively seeking remote or onsite opportunities where I can grow as a developer and contribute to meaningful, tech-driven projects. If you're looking for someone passionate about solving problems through technology, I’d love to connect!
+           Hi, I’m Kagitala Bhargava Prasad, a developer passionate about building impactful solutions that blend IoT, web development, and embedded systems.
+
+I specialize in full-stack and IoT-based projects, combining hardware and software to solve real-world problems. Always learning through hands-on experience, I’m seeking remote or onsite roles where I can grow and contribute to innovative, tech-driven teams.
           </Paragraph>
           <JourneyTitle>My Journey</JourneyTitle>
           {/* Note: The <TimelineLine /> component is removed */}

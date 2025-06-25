@@ -158,7 +158,10 @@ const Portfolio = () => {
                             repeat={Infinity}
                         />
                         <p style={styles.content}>
-                            I transform innovative ideas into robust, scalable, and user-friendly web applications. Specializing in the MERN stack to build seamless digital experiences from concept to deployment.
+                            "I transform innovative ideas into intelligent, scalable solutions by combining
+                             IoT technology with modern web development. Specializing in the MERN stack and 
+                             real-time systems, I build robust, user-friendly applications that connect the 
+                             physical and digital worlds seamlessly—from concept to deployment.
                         </p>
                         <div style={styles.ctaContainer}>
                             <a 
