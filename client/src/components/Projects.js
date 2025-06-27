@@ -12,6 +12,7 @@ import project6Img from '../images/p6.jpg';
 import project7Img from '../images/P7.jpg';
 import project8Img from '../images/p8.png';
 import project9Img from '../images/p9.png';
+import project10Img from '../images/p10.png';
 
 const projects = [
     {
@@ -42,8 +43,9 @@ const projects = [
     liveDemo: 'https://rlr-pi.vercel.app/',
     githubLink: 'https://github.com/bhargav676/RLR',
   },
+
     {
-    id: 5,
+    id: 4,
     title: 'Book Management System',
     image: project4Img,
     description: 'The RFID-Based Book Management System automates book exchanges with real-time tracking. RFID tags enable secure verification and instant return status updates for better library management.',
@@ -52,7 +54,17 @@ const projects = [
     githubLink: 'https://github.com/your-repo/rfid-library',
   },
   {
-    id: 4,
+  id: 5,
+  title: "Water Level Monitoring System",
+  image: project10Img,
+  description: "An IoT-based Water Level Monitoring System that tracks tank levels using random distance data from an ESP32. Real-time data is displayed on a responsive React dashboard, with historical records and animated visuals. Web push notifications and Twilio SMS alerts are triggered for low levels (<30%), ensuring timely monitoring.",
+  tech: ["React", "Node.js", "MongoDB", "Express", "IoT", "Socket.IO", "ESP32", "Twilio", "OneSignal"],
+  liveDemo: "https://waterlevel-two.vercel.app/",
+  githubLink: "https://github.com/bhargav676/waterlevel"
+},
+
+  {
+    id: 6,
     title: 'Movie Ticket Booking',
     image: project3Img,
     description: 'Developed a platform for browsing movies, selecting seats, and making payments securely. Includes an Admin Dashboard for managing movies and bookings, ensuring a smooth user experience.',
@@ -62,7 +74,7 @@ const projects = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: 'Job Finder',
     image: project5Img,
     description: 'A job search website that helps users find jobs by location and role. Users can filter listings, view job details, and apply easily, making the job search process faster and more efficient.',
@@ -71,7 +83,7 @@ const projects = [
     githubLink: 'https://github.com/bhargav676/Jobfinder',
   },
   {
-  id: 7,
+  id: 8,
   title: 'Jalarakshak - Official Website',
   image: project9Img, 
   description: 'The official website for Jalarakshak, a water-tech company focused on innovative solutions for water monitoring and sustainability. It showcases products, company values, contact details, and integrates customer support features.',
@@ -80,7 +92,7 @@ const projects = [
   githubLink: 'https://github.com/bhargav676/jalarakshak', 
 },
   {
-    id: 8,
+    id: 9,
     title: 'Wireless EV Charging System',
     image: project6Img,
     description: 'The Wireless EV Charging System uses RFID technology for automated vehicle identification and cost calculation at charging stations. It features a time-based charging system, an LCD display for real-time cost updates, and automated cost processing.',
@@ -89,7 +101,7 @@ const projects = [
     githubLink: 'https://github.com/your-repo/ev-charging',
   },
   {
-    id: 9,
+    id: 10,
     title: 'Live IPL Score Display',
     image: project7Img,
     description: 'Built an ESP32-based device to retrieve live live IPL match scores via CricAPI and show them on an I2C LCD with a clean, real-time format. Includes reliable team name parsing and periodic updates.',
