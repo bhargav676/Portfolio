@@ -13,6 +13,7 @@ import project7Img from '../images/P7.jpg';
 import project8Img from '../images/p8.png';
 import project9Img from '../images/p9.png';
 import project10Img from '../images/p10.png';
+import project11Img from '../images/p11.png';
 
 const projects = [
     {
@@ -43,16 +44,16 @@ const projects = [
     liveDemo: 'https://rlr-pi.vercel.app/',
     githubLink: 'https://github.com/bhargav676/RLR',
   },
-
-    {
-    id: 4,
-    title: 'Book Management System',
-    image: project4Img,
-    description: 'The RFID-Based Book Management System automates book exchanges with real-time tracking. RFID tags enable secure verification and instant return status updates for better library management.',
-    tech: ['Arduino IDE', 'RFID'],
-    liveDemo: '',
-    githubLink: 'https://github.com/your-repo/rfid-library',
-  },
+  {
+  id: 4,
+  title: 'IETE Student Forum ',
+  image: project11Img,
+  description: 'A dynamic website developed for the IETE Student Forum at GVP College of Engineering. The platform showcases past and upcoming events, announcements, and student activities. It is a full-stack application that manages both frontend and backend seamlessly, serving as the official forum website for our college.',
+  tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS'],
+  liveDemo: 'https://iete-studentforum.vercel.app/',
+  githubLink: 'https://github.com/bhargav676/',
+},
+  
   {
   id: 5,
   title: "Water Level Monitoring System",
@@ -110,6 +111,15 @@ const projects = [
     githubLink: 'https://github.com/your-repo/ipl-display',
   },
 
+  {
+    id: 11,
+    title: 'Book Management System',
+    image: project4Img,
+    description: 'The RFID-Based Book Management System automates book exchanges with real-time tracking. RFID tags enable secure verification and instant return status updates for better library management.',
+    tech: ['Arduino IDE', 'RFID'],
+    liveDemo: '',
+    githubLink: 'https://github.com/your-repo/rfid-library',
+  },
 
 
 ];
